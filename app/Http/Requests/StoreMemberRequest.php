@@ -24,7 +24,7 @@ class StoreMemberRequest extends FormRequest
         return [
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:members',
-            'telepon' => 'required|string|max:14|unique:members',
+            'telepon' => 'required|numeric|unique:members',
             'alamat' => 'required|string|max:255',
             'tanggal_bergabung' => 'required|date|before_or_equal:today'
         ];
@@ -39,6 +39,7 @@ class StoreMemberRequest extends FormRequest
             'email.email' => 'Email harus berupa email',
             'telepon.required' => 'Telepon harus diisi',
             'telepon.unique' => 'Telepon sudah terdaftar',
+            'telepon.numeric' => 'Telepon harus berupa angka',
             'alamat.required' => 'Alamat harus diisi',
             'tanggal_bergabung.required' => 'Tgl Bergabung harus diisi',
             'tanggal_bergabung.before_or_equal' => 'Tgl Bergabung harus sebelum atau sama dengan hari ini',

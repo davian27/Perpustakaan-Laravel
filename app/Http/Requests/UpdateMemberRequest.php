@@ -27,9 +27,24 @@ class UpdateMemberRequest extends FormRequest
 
             'nama' => 'required|string|max:255',
             'email' => 'required|email|unique:members,email,' . $id,
-            'telepon' => 'required|string|max:14',
+            'telepon' => 'required|numeric',
             'alamat' => 'required|string|max:255',
             'tanggal_bergabung' => 'required|date|before_or_equal:today'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => ':attribute harus diisi',
+            'string' => ':attribute harus berupa string',
+            'max' => ':attribute tidak boleh lebih dari :max karakter',
+            'email' => ':attribute harus berupa email',
+            'unique' => ':attribute sudah ada',
+            'before_or_equal' => ':attribute harus kurang dari atau sama dengan :date',
+            'numeric' => ':attribute harus berupa angka',
+            'date' => ':attribute harus berupa tanggal',
+
         ];
     }
 }
